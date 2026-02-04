@@ -1,40 +1,37 @@
-/* ALL imports MUST be at the very top */
+/* ALL imports MUST be at the very top - Nothing before them */
 @import "tailwindcss";
 
 @layer base {
   :root {
-    --primary: #8B7D6B;
-    --secondary: #A8C8A0;
-    --accent: #D4B483;
-    --dark: #3A4A3F;
-    --light: #F8F5F0;
-    --text: #4A5444;
+    --clay: #9C8B7D;
+    --sage: #A3B5A5;
+    --sand: #E8DFD4;
+    --earth: #5C5348;
+    --sky: #D1E0D7;
+    --mist: #F5F1EB;
+    --ink: #3A3630;
   }
 
   body {
-    @apply bg-[#F8F5F0] text-[#4A5444] antialiased;
+    @apply bg-[#F5F1EB] text-[#3A3630] antialiased;
     font-family: 'Inter', sans-serif;
-    line-height: 1.7;
+    line-height: 1.8;
   }
 
-  h1, h2, h3 {
-    font-family: 'Playfair Display', serif;
+  h1, h2 {
+    font-family: 'Cormorant Garamond', serif;
     font-weight: 400;
     font-style: italic;
-    letter-spacing: -0.5px;
+    letter-spacing: -0.02em;
   }
 
-  h1 { @apply text-5xl md:text-6xl; }
-  h2 { @apply text-4xl md:text-5xl; }
-  h3, .subtitle {
-    font-family: 'Inter', sans-serif;
-    font-weight: 300;
-    letter-spacing: 0.5px;
-    @apply uppercase tracking-widest;
+  h3, h4 {
+    font-family: 'Playfair Display', serif;
+    font-weight: 400;
   }
 }
 
-/* Keyframes - outside of layers */
+/* Keyframes */
 @keyframes soft-pulse {
   0% { transform: scale(1); }
   50% { transform: scale(1.03); }
@@ -61,24 +58,13 @@
   opacity: 0;
 }
 
-/* Utilities layer */
 @layer utilities {
   .img-arch {
     border-top-left-radius: 9999px;
     border-top-right-radius: 9999px;
     overflow: hidden;
   }
-  
-  .section-divider {
-    @apply flex items-center text-[#c9c4bb] my-8;
-  }
-  
-  .section-divider::before,
-  .section-divider::after {
-    content: "";
-    @apply flex-1 border-t border-[#d8d2c7] mx-4;
-  }
-  
+
   .hover-lift {
     @apply transition-all duration-500 ease-out;
   }
@@ -87,8 +73,3 @@
     @apply -translate-y-2 shadow-2xl;
   }
 }
-
-/* Custom scrollbar */
-::-webkit-scrollbar { width: 8px; }
-::-webkit-scrollbar-track { background: #F8F5F0; }
-::-webkit-scrollbar-thumb { background: var(--primary); border-radius: 4px; }

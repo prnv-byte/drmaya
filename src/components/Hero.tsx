@@ -1,116 +1,155 @@
 "use client";
-import { useEffect, useRef } from "react";
+import { useEffect, useState } from "react";
 
 export default function Hero() {
-  const heroRef = useRef<HTMLDivElement>(null);
+  const [scrollY, setScrollY] = useState(0);
+  const [leafCount] = useState(8);
 
   useEffect(() => {
-    // Parallax effect
     const handleScroll = () => {
-      if (heroRef.current) {
-        const scrolled = window.pageYOffset;
-        const rate = scrolled * -0.5;
-        heroRef.current.style.transform = `translate3d(0, ${rate}px, 0)`;
-      }
+      setScrollY(window.scrollY);
     };
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   return (
-    <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20">
-      {/* Background with gradient overlay */}
-      <div className="absolute inset-0 z-0">
-        <div className="absolute inset-0 bg-gradient-to-br from-[#F8F5F0] via-white to-[#EDE8DF]"></div>
-        <div 
-          ref={heroRef}
-          className="absolute inset-0"
+    <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-b from-[#F5F1EB] to-[#E8DFD4]">
+      {/* Animated Leaves */}
+      {Array.from({ length: leafCount }).map((_, i) => (
+        <div
+          key={i}
+          className="absolute top-0 pointer-events-none z-0"
           style={{
-            backgroundImage: `
-              radial-gradient(circle at 20% 80%, rgba(168, 200, 160, 0.15) 0%, transparent 50%),
-              radial-gradient(circle at 80% 20%, rgba(139, 125, 107, 0.1) 0%, transparent 50%)
-            `
+            left: `${(i + 1) * (100 / (leafCount + 1))}%`,
+            animation: `leaf-fall ${15 + i * 2}s linear infinite`,
+            animationDelay: `${i * 1.5}s`,
+            opacity: 0.6 - i * 0.05,
           }}
-        ></div>
+        >
+          <div className="leaf-shape w-8 h-12 bg-gradient-to-br from-[#A3B5A5]/40 to-[#9C8B7D]/30 transform -rotate-45"></div>
+        </div>
+      ))}
+
+      {/* Watercolor Background Blobs */}
+      <div className="absolute inset-0 overflow-hidden">
+        <div 
+          className="absolute top-1/4 -left-32 w-96 h-96 rounded-full mix-blend-multiply opacity-30 animate-gentle-float"
+          style={{ 
+            background: 'radial-gradient(circle, #A3B5A5 0%, transparent 70%)',
+            animationDelay: '0s'
+          }}
+        />
+        <div 
+          className="absolute bottom-1/4 -right-32 w-96 h-96 rounded-full mix-blend-multiply opacity-20 animate-gentle-float"
+          style={{ 
+            background: 'radial-gradient(circle, #9C8B7D 0%, transparent 70%)',
+            animationDelay: '2s'
+          }}
+        />
       </div>
 
       <div className="relative z-10 max-w-6xl mx-auto px-6 text-center">
-        {/* Animated badge */}
-        <div className="inline-flex items-center gap-2 mb-8 px-4 py-2 rounded-full bg-white/80 backdrop-blur-sm border border-[#D4B483]/30 animate-fade-slide-up">
-          <div className="w-2 h-2 rounded-full bg-[#A8C8A0] animate-pulse"></div>
-          <span className="text-xs uppercase tracking-widest text-[#8B7D6B] font-medium">
-            Now Accepting New Clients
-          </span>
+        {/* Handwritten Welcome Note */}
+        <div className="absolute top-8 left-6 md:left-12 transform -rotate-6 animate-gentle-float">
+          <div className="texture-paper p-6 rounded-lg shadow-lg hand-drawn-border max-w-xs">
+            <p className="handwritten text-[#5C5348] text-lg">Welcome, friend</p>
+            <div className="w-12 h-0.5 bg-[#9C8B7D]/30 my-2 mx-auto"></div>
+            <p className="serif-italic text-sm text-[#5C5348]/70">Take a deep breath</p>
+          </div>
         </div>
 
-        {/* Main heading with reveal animation */}
-        <h1 className="text-5xl md:text-7xl lg:text-8xl font-serif italic text-[#3A4A3F] mb-6 leading-tight">
-          <span className="block animate-text-reveal [animation-delay:200ms]">
-            Healing through
-          </span>
-          <span className="block animate-text-reveal [animation-delay:600ms] relative">
-            <span className="relative">
-              connection
-              <svg className="absolute -bottom-4 left-0 w-full" viewBox="0 0 200 10">
+        {/* Main Content */}
+        <div className="mb-12">
+          {/* Organic Divider */}
+          <div className="flex items-center justify-center gap-4 mb-8">
+            <div className="w-16 h-px bg-gradient-to-r from-transparent to-[#9C8B7D]/30"></div>
+            <div className="w-3 h-3 rounded-full bg-[#9C8B7D]/20 animate-pulse"></div>
+            <div className="w-16 h-px bg-gradient-to-r from-[#9C8B7D]/30 to-transparent"></div>
+          </div>
+
+          {/* Main Heading with Character */}
+          <h1 className="text-5xl md:text-7xl lg:text-8xl font-light mb-6">
+            <span className="block serif-italic text-[#5C5348] animate-paper-unfold [animation-delay:200ms]">
+              Find your
+            </span>
+            <span className="block relative mt-4">
+              <span className="texture-clay bg-clip-text text-transparent font-medium animate-ink-spread [animation-delay:600ms]">
+                ground
+              </span>
+              <svg 
+                className="absolute -bottom-4 left-1/2 transform -translate-x-1/2 w-48 md:w-64" 
+                viewBox="0 0 200 12"
+                style={{ transform: `translateX(-50%) translateY(${Math.min(scrollY * 0.1, 20)}px)` }}
+              >
                 <path 
-                  d="M0,5 Q50,0 100,5 T200,5" 
+                  d="M0,6 Q50,0 100,6 T200,6" 
                   fill="none" 
-                  stroke="url(#gradient)" 
-                  strokeWidth="2"
-                  className="animate-dash"
+                  stroke="url(#organic-gradient)" 
+                  strokeWidth="1.5"
+                  strokeLinecap="round"
                 />
                 <defs>
-                  <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="0%">
-                    <stop offset="0%" stopColor="#D4B483" />
-                    <stop offset="100%" stopColor="#A8C8A0" />
+                  <linearGradient id="organic-gradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                    <stop offset="0%" stopColor="#9C8B7D" stopOpacity="0.3" />
+                    <stop offset="50%" stopColor="#A3B5A5" stopOpacity="0.6" />
+                    <stop offset="100%" stopColor="#9C8B7D" stopOpacity="0.3" />
                   </linearGradient>
                 </defs>
               </svg>
             </span>
-          </span>
-        </h1>
+          </h1>
 
-        {/* Subtitle */}
-        <p className="text-xl md:text-2xl text-[#8B7D6B] font-serif italic mb-12 max-w-2xl mx-auto animate-fade-slide-up [animation-delay:1000ms] leading-relaxed">
-          Evidence-based therapy for anxiety, trauma, and personal growth in Santa Monica
-        </p>
-
-        {/* CTA Buttons */}
-        <div className="flex flex-col sm:flex-row gap-4 justify-center items-center animate-fade-slide-up [animation-delay:1200ms]">
-          <button className="group relative px-8 py-4 bg-gradient-to-r from-[#8B7D6B] to-[#A8C8A0] text-white text-sm uppercase tracking-widest rounded-full overflow-hidden hover:shadow-2xl transition-all duration-500 hover:scale-105">
-            <span className="relative z-10">Schedule a Consultation</span>
-            <div className="absolute inset-0 bg-gradient-to-r from-[#A8C8A0] to-[#8B7D6B] opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-            <div className="absolute -inset-1 bg-white/20 rounded-full blur opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-          </button>
-          
-          <button className="group px-8 py-4 border border-[#D4B483] text-[#8B7D6B] text-sm uppercase tracking-widest rounded-full hover:bg-[#D4B483]/10 transition-all duration-300 flex items-center gap-2">
-            <span>Watch Introduction</span>
-            <svg className="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
-            </svg>
-          </button>
-        </div>
-
-        {/* Stats bar */}
-        <div className="mt-20 grid grid-cols-2 md:grid-cols-4 gap-8 max-w-3xl mx-auto">
-          {[
-            { value: "15+", label: "Years Experience" },
-            { value: "1000+", label: "Clients Helped" },
-            { value: "98%", label: "Client Satisfaction" },
-            { value: "EMDR", label: "Certified" },
-          ].map((stat, i) => (
-            <div key={i} className="text-center animate-fade-slide-up" style={{ animationDelay: `${1400 + i * 200}ms` }}>
-              <div className="text-3xl font-serif italic text-[#3A4A3F] mb-2">{stat.value}</div>
-              <div className="text-xs uppercase tracking-widest text-[#8B7D6B]">{stat.label}</div>
+          {/* Subtitle with Personality */}
+          <div className="max-w-2xl mx-auto mt-16 animate-paper-unfold [animation-delay:1000ms]">
+            <p className="text-xl md:text-2xl serif-italic text-[#5C5348] mb-8 leading-relaxed">
+              "Therapy isn't about fixing what's broken. It's about 
+              <span className="handwritten text-[#9C8B7D] mx-2">rediscovering</span> 
+              what was never lost."
+            </p>
+            <div className="inline-flex items-center gap-3 text-[#5C5348]/60">
+              <div className="w-8 h-px bg-[#9C8B7D]/30"></div>
+              <span className="text-sm uppercase tracking-widest">Dr. Maya Reynolds</span>
+              <div className="w-8 h-px bg-[#9C8B7D]/30"></div>
             </div>
-          ))}
+          </div>
         </div>
-      </div>
 
-      {/* Scroll indicator */}
-      <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
-        <div className="w-6 h-10 border-2 border-[#D4B483] rounded-full flex justify-center">
-          <div className="w-1 h-3 bg-[#D4B483] rounded-full mt-2 animate-pulse"></div>
+        {/* Organic CTA Buttons */}
+        <div className="flex flex-col sm:flex-row gap-6 justify-center items-center animate-paper-unfold [animation-delay:1400ms] mt-16">
+          {/* Primary Button - Clay Texture */}
+          <button className="group relative px-10 py-4 rounded-full overflow-hidden transition-all duration-700 hover:scale-105">
+            <div className="absolute inset-0 texture-clay rounded-full"></div>
+            <div className="absolute inset-0 bg-gradient-to-r from-[#9C8B7D]/0 via-white/10 to-[#9C8B7D]/0 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-1000"></div>
+            <span className="relative flex items-center gap-3 text-white text-sm uppercase tracking-widest">
+              <span className="group-hover:rotate-12 transition-transform">🌱</span>
+              Begin Your Journey
+              <svg className="w-4 h-4 group-hover:translate-x-2 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+              </svg>
+            </span>
+          </button>
+
+          {/* Secondary Button - Natural Outline */}
+          <button className="group px-8 py-3 border border-[#9C8B7D]/30 rounded-full text-[#5C5348] hover:bg-[#9C8B7D]/5 transition-all duration-500 flex items-center gap-2">
+            <span className="text-sm">Watch My Philosophy</span>
+            <div className="w-8 h-8 rounded-full border border-[#9C8B7D]/30 flex items-center justify-center group-hover:bg-[#9C8B7D]/10 transition-colors">
+              <span className="text-[#9C8B7D]">▶</span>
+            </div>
+          </button>
+        </div>
+
+        {/* Scroll Indicator */}
+        <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2">
+          <div className="text-center">
+            <div className="text-xs text-[#5C5348]/40 uppercase tracking-widest mb-2">Breathe</div>
+            <div className="w-6 h-10 border border-[#9C8B7D]/20 rounded-full flex justify-center">
+              <div 
+                className="w-1 h-3 bg-gradient-to-b from-[#9C8B7D] to-[#A3B5A5] rounded-full mt-2 animate-bounce"
+                style={{ animationDuration: '2s' }}
+              ></div>
+            </div>
+          </div>
         </div>
       </div>
     </section>
