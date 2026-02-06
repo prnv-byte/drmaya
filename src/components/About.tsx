@@ -22,12 +22,12 @@ export default function About() {
               />
               
               {/* Overlay Text */}
-              <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-[#1e3a5f]/70 to-transparent p-8">
+              {/* <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-[#1e3a5f]/70 to-transparent p-8">
                 <div className="text-white">
                   <div className="handwritten text-lg mb-2">PsyD, Clinical Psychologist</div>
                   <div className="text-sm opacity-80">Licensed in California since 2009</div>
                 </div>
-              </div>
+              </div> */}
             </div>
             
             {/* Decorative Elements */}
