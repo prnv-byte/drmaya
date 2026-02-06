@@ -5,14 +5,14 @@ export default function About() {
   const [isHovered, setIsHovered] = useState(false);
 
   return (
-    <section className="py-24 px-6 bg-gradient-to-b from-white to-[#F5F1EB]">
+    <section className="py-24 px-6 bg-gradient-to-b from-white to-[#f8f5f1]">
       <div className="max-w-6xl mx-auto">
         <div className="grid md:grid-cols-2 gap-16 items-center">
           {/* Photo with Character */}
           <div className="relative">
-            <div className="relative z-10 overflow-hidden rounded-2xl organic-shape shadow-xl">
+            <div className="relative z-10 overflow-hidden rounded-2xl organic-shape shadow-soft">
               <img
-                src="/images/image_1d061b.jpg"
+                src="/images/drmayareynoldre.png"
                 className={`w-full h-[600px] object-cover transition-all duration-1000 ${
                   isHovered ? 'scale-110 grayscale-0' : 'grayscale-[0.1]'
                 }`}
@@ -22,7 +22,7 @@ export default function About() {
               />
               
               {/* Overlay Text */}
-              <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/60 to-transparent p-8">
+              <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-[#1e3a5f]/70 to-transparent p-8">
                 <div className="text-white">
                   <div className="handwritten text-lg mb-2">PsyD, Clinical Psychologist</div>
                   <div className="text-sm opacity-80">Licensed in California since 2009</div>
@@ -31,15 +31,15 @@ export default function About() {
             </div>
             
             {/* Decorative Elements */}
-            <div className="absolute -top-6 -left-6 w-24 h-24 rounded-full bg-gradient-to-br from-[#A3B5A5]/20 to-transparent animate-gentle-float"></div>
-            <div className="absolute -bottom-6 -right-6 w-32 h-32 rounded-full bg-gradient-to-br from-[#9C8B7D]/20 to-transparent animate-gentle-float" style={{ animationDelay: '2s' }}></div>
+            <div className="absolute -top-6 -left-6 w-24 h-24 rounded-full bg-gradient-to-br from-[#4a9b8e]/20 to-transparent animate-gentle-float"></div>
+            <div className="absolute -bottom-6 -right-6 w-32 h-32 rounded-full bg-gradient-to-br from-[#9a8cbc]/20 to-transparent animate-gentle-float" style={{ animationDelay: '2s' }}></div>
             
             {/* Polaroid-style Note */}
             <div className="absolute -right-8 top-1/3 transform rotate-6">
-              <div className="texture-paper p-4 rounded-lg shadow-lg hand-drawn-border w-48">
-                <p className="handwritten text-[#5C5348] text-sm">"Tea drinker & dog mom"</p>
-                <div className="w-8 h-0.5 bg-[#9C8B7D]/30 my-2"></div>
-                <p className="text-xs text-[#5C5348]/60">Always learning</p>
+              <div className="bg-white p-4 rounded-lg shadow-gentle border border-[#e8e2d9] w-48">
+                <p className="handwritten text-[#4a9b8e] text-sm">"Tea drinker & dog mom"</p>
+                <div className="w-8 h-0.5 bg-[#4a9b8e]/30 my-2"></div>
+                <p className="text-xs text-[#718096]">Always learning</p>
               </div>
             </div>
           </div>
@@ -49,26 +49,26 @@ export default function About() {
             {/* Section Header with Personality */}
             <div className="mb-8">
               <div className="inline-flex items-center gap-3 mb-4">
-                <div className="w-8 h-px bg-gradient-to-r from-[#9C8B7D] to-transparent"></div>
-                <span className="handwritten text-xl text-[#9C8B7D]">hello there</span>
-                <div className="w-8 h-px bg-gradient-to-r from-transparent to-[#9C8B7D]"></div>
+                <div className="w-8 h-px bg-gradient-to-r from-[#4a9b8e] to-transparent"></div>
+                <span className="handwritten text-xl text-[#4a9b8e]">hello there</span>
+                <div className="w-8 h-px bg-gradient-to-r from-transparent to-[#4a9b8e]"></div>
               </div>
-              <h2 className="text-4xl md:text-5xl font-light text-[#3A3630] mb-4">
+              <h2 className="text-4xl md:text-5xl font-light text-[#1e3a5f] mb-4">
                 I'm{" "}
-                <span className="serif-italic text-[#9C8B7D]">Maya</span>
+                <span className="serif-italic text-gradient-teal">Maya</span>
               </h2>
             </div>
 
             {/* Bio with Personal Touch */}
             <div className="space-y-6">
-              <p className="text-lg text-[#5C5348] leading-relaxed">
+              <p className="text-lg text-[#2d3748] leading-relaxed">
                 I'm a clinical psychologist who believes that therapy should feel like 
-                a <span className="serif-italic text-[#9C8B7D]">conversation between old friends</span>, 
+                a <span className="serif-italic text-[#4a9b8e]">conversation between old friends</span>, 
                 not a clinical interrogation.
               </p>
               
-              <div className="texture-paper p-6 rounded-lg border border-[#E8DFD4]">
-                <p className="text-[#5C5348] leading-relaxed italic">
+              <div className="bg-[#f8f5f1] p-6 rounded-lg border border-[#e8e2d9]">
+                <p className="text-[#2d3748] leading-relaxed italic">
                   "My approach is grounded in the belief that you already have 
                   everything you need within you. My role is to help you 
                   remember what you've forgotten."
@@ -77,23 +77,23 @@ export default function About() {
 
               <div className="grid grid-cols-2 gap-4 mt-8">
                 {[
-                  { label: "EMDR Certified", icon: "🎯" },
-                  { label: "Trauma-Informed", icon: "💫" },
-                  { label: "15+ Years Experience", icon: "📚" },
-                  { label: "California Licensed", icon: "🌉" },
+                  { label: "EMDR Certified", icon: "🎯", color: "from-[#4a9b8e]/10 to-[#4a9b8e]/5" },
+                  { label: "Trauma-Informed", icon: "💫", color: "from-[#9a8cbc]/10 to-[#9a8cbc]/5" },
+                  { label: "15+ Years Experience", icon: "📚", color: "from-[#d4a5a5]/10 to-[#d4a5a5]/5" },
+                  { label: "California Licensed", icon: "🌉", color: "from-[#3a7d5f]/10 to-[#3a7d5f]/5" },
                 ].map((item, i) => (
                   <div key={i} className="flex items-center gap-3">
-                    <div className="w-8 h-8 rounded-full bg-[#9C8B7D]/10 flex items-center justify-center">
+                    <div className={`w-8 h-8 rounded-full bg-gradient-to-br ${item.color} flex items-center justify-center`}>
                       {item.icon}
                     </div>
-                    <span className="text-sm text-[#5C5348]">{item.label}</span>
+                    <span className="text-sm text-[#2d3748]">{item.label}</span>
                   </div>
                 ))}
               </div>
             </div>
 
             {/* Personal CTA */}
-            <button className="group mt-12 px-8 py-4 border border-[#9C8B7D] rounded-full text-[#5C5348] hover:bg-[#9C8B7D] hover:text-white transition-all duration-500 flex items-center gap-3">
+            <button className="btn-teal group mt-12 px-8 py-4 rounded-full text-white transition-all duration-500 flex items-center gap-3">
               <span className="group-hover:rotate-12 transition-transform">📖</span>
               <span className="text-sm uppercase tracking-widest">Read My Full Story</span>
               <svg className="w-4 h-4 group-hover:translate-x-2 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">

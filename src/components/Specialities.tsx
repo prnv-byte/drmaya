@@ -9,39 +9,39 @@ export default function Specialities() {
       title: "Trauma Recovery", 
       description: "Healing from past experiences with evidence-based EMDR and somatic therapies",
       icon: "🕊️",
-      color: "from-[#A8C8A0] to-[#8BAF84]",
+      color: "from-[#4a9b8e] to-[#3a7d5f]",
       image: "/images/image_1d05a7.jpg"
     },
     { 
       title: "Anxiety & Panic", 
       description: "Managing worry, panic attacks, and finding calm through CBT and mindfulness",
       icon: "🌿",
-      color: "from-[#8B7D6B] to-[#A8957A]",
+      color: "from-[#9a8cbc] to-[#8a7cac]",
       image: "/images/image_1d05c4.jpg"
     },
     { 
       title: "Professional Burnout", 
       description: "Recovering from work-related stress and rebuilding sustainable balance",
       icon: "⚖️",
-      color: "from-[#D4B483] to-[#E8C9A0]",
+      color: "from-[#d4a5a5] to-[#c49595]",
       image: "/images/image_1d05df.jpg"
     },
   ];
 
   return (
-    <section id="specialties" className="py-24 px-6 gradient-primary">
+    <section id="specialties" className="py-24 px-6 bg-gradient-to-b from-[#f8f5f1] to-white">
       <div className="max-w-7xl mx-auto">
         {/* Section Header */}
         <div className="text-center mb-16">
           <div className="inline-flex items-center gap-2 mb-4">
-            <div className="w-12 h-px bg-gradient-to-r from-transparent via-[#D4B483] to-transparent"></div>
-            <span className="text-xs uppercase tracking-widest text-[#8B7D6B] font-medium">Specialized Care</span>
-            <div className="w-12 h-px bg-gradient-to-r from-transparent via-[#D4B483] to-transparent"></div>
+            <div className="w-12 h-px bg-gradient-to-r from-transparent via-[#4a9b8e] to-transparent"></div>
+            <span className="text-xs uppercase tracking-widest text-[#4a9b8e] font-medium">Specialized Care</span>
+            <div className="w-12 h-px bg-gradient-to-r from-transparent via-[#4a9b8e] to-transparent"></div>
           </div>
-          <h2 className="text-4xl md:text-5xl font-serif italic text-[#3A4A3F] mb-6">
+          <h2 className="text-4xl md:text-5xl font-serif italic text-[#1e3a5f] mb-6">
             Areas of Focus
           </h2>
-          <p className="text-lg text-[#8B7D6B] max-w-2xl mx-auto font-serif italic">
+          <p className="text-lg text-[#2d3748] max-w-2xl mx-auto font-serif italic">
             Personalized therapy approaches for your unique journey
           </p>
         </div>
@@ -58,7 +58,7 @@ export default function Specialities() {
               {/* Card */}
               <div className={`
                 relative h-full rounded-2xl overflow-hidden
-                transition-all duration-700 hover-lift-3d
+                transition-all duration-700 hover-lift
                 ${hoveredIndex === index ? 'z-10' : ''}
               `}>
                 {/* Background Image with Overlay */}
@@ -69,26 +69,17 @@ export default function Specialities() {
                     className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110"
                   />
                   <div className={`absolute inset-0 bg-gradient-to-br ${spec.color} opacity-0 group-hover:opacity-80 transition-opacity duration-500`}></div>
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent"></div>
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-black/20 to-transparent"></div>
                 </div>
 
                 {/* Content */}
-                <div className="relative h-full min-h-[400px] p-8 flex flex-col justify-between">
-                  {/* Top Icon */}
-                  <div className={`
-                    w-16 h-16 rounded-2xl glass-card flex items-center justify-center
-                    text-2xl mb-6 transition-all duration-500
-                    ${hoveredIndex === index ? 'scale-110 rotate-6' : ''}
-                  `}>
-                    {spec.icon}
-                  </div>
-
+                <div className="relative h-full min-h-[400px] p-8 flex flex-col justify-end">
                   {/* Text Content */}
                   <div>
-                    <h3 className="text-2xl font-serif italic text-white mb-4">
+                    <h3 className="text-2xl font-serif italic text-white mb-4 drop-shadow-lg">
                       {spec.title}
                     </h3>
-                    <p className="text-white/90 text-sm leading-relaxed mb-6">
+                    <p className="text-white/90 text-sm leading-relaxed mb-6 drop-shadow-md">
                       {spec.description}
                     </p>
                     
@@ -96,10 +87,11 @@ export default function Specialities() {
                     <button className={`
                       flex items-center gap-2 text-white text-xs uppercase tracking-widest
                       opacity-0 group-hover:opacity-100 transform translate-y-4 group-hover:translate-y-0
-                      transition-all duration-500
+                      transition-all duration-500 bg-black/30 backdrop-blur-sm px-4 py-2 rounded-full
+                      hover:bg-black/50
                     `}>
                       <span>Learn More</span>
-                      <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <svg className="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
                       </svg>
                     </button>
@@ -108,18 +100,16 @@ export default function Specialities() {
 
                 {/* Decorative Border */}
                 <div className="absolute inset-0 border border-white/20 rounded-2xl pointer-events-none"></div>
-              </div>
 
-              {/* Floating Label */}
-              <div className={`
-                absolute -top-4 left-1/2 transform -translate-x-1/2
-                px-4 py-2 rounded-full glass-card border border-white/20
-                transition-all duration-500
-                ${hoveredIndex === index ? 'scale-110 -translate-y-2' : ''}
-              `}>
-                <span className="text-xs uppercase tracking-widest text-[#3A4A3F] font-medium">
-                  {spec.title}
-                </span>
+                {/* Icon Badge */}
+                <div className={`
+                  absolute top-6 right-6 w-12 h-12 rounded-xl glass-card
+                  flex items-center justify-center text-xl
+                  transition-all duration-500
+                  ${hoveredIndex === index ? 'scale-110 rotate-6' : ''}
+                `}>
+                  {spec.icon}
+                </div>
               </div>
             </div>
           ))}
@@ -127,7 +117,7 @@ export default function Specialities() {
 
         {/* Bottom Note */}
         <div className="text-center mt-16">
-          <p className="text-sm text-[#8B7D6B] italic max-w-2xl mx-auto">
+          <p className="text-sm text-[#2d3748] italic max-w-2xl mx-auto">
             "Each person's journey is unique. I adapt evidence-based methods to fit your specific needs and pace."
           </p>
         </div>

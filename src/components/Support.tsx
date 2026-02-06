@@ -42,7 +42,7 @@ export default function Support() {
           <div className="relative group">
             <div className="h-[600px] w-full overflow-hidden rounded-sm shadow-2xl transition-all duration-700 group-hover:shadow-none">
               <img 
-                src="/images/image_1d0549.jpg" 
+                src="/images/office1.jpeg" 
                 className="w-full h-full object-cover grayscale-[0.2] contrast-[1.05]" 
                 alt="Dr. Maya Reynolds Santa Monica Therapy Office" 
               />
