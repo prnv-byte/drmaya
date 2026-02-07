@@ -1,8 +1,8 @@
 import "./globals.css";
 
 export const metadata = {
-  title: "Dr. Maya Reynolds – Therapy with Character & Compassion",
-  description: "Evidence-based therapy with a human touch. Specializing in anxiety, trauma, and finding your ground in Santa Monica.",
+  title: "Dr. Maya Reynolds, PsyD – Clinical Psychologist in Santa Monica",
+  description: "Licensed clinical psychologist based in Santa Monica, California, offering therapy for adults overwhelmed by anxiety, stress, or trauma. Specializing in anxiety, panic, trauma, and burnout with evidence-based methods including CBT and EMDR.",
 };
 
 export default function RootLayout({
